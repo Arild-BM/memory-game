@@ -1,0 +1,56 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    align-items: center;
+    margin: auto;
+}
+
+.selections-frame {
+    background-color: var(--color-modal-bckground);
+    width: 50vw;
+    max-width: 400px;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 0;
+}
+
+h1 {
+    color: var(--color-button-text)
+}
+
+h2 {
+    margin: 1rem 0 0.75rem;
+    font-size: 0.7rem;
+}
+
+h3 {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.button-line {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    background-color: var(--color-button-bckground);
+    color: var(--color-button-text);
+    flex-grow: 1;
+    padding: 5px 0;
+    width: 50px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.start-game {
+    background-color: var(--color-button-start-bckground);
+    width: unset;
+    margin-top: 2rem;
+}
+
+.selected {
+    background-color: var(--color-button-selected);
+}

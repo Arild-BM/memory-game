@@ -1,0 +1,12 @@
+:root {
+    --color-body-background: #152938;
+    --color-modal-bckground: #ffffff;
+    --color-button-bckground:  #bcced9;
+    --color-button-selected:  #304859;
+    --color-button-text:  #fcfcfc;
+    --color-button-start-bckground: #fda214;
+}
+
+body {
+    background-color: var(--color-body-background);
+}
