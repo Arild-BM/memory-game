@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useState } from "react"
+import StartPage from "./components/StartPage"
+import RunGame from "./components/RunGame"
 import './App.css';
 
+
 function App() {
+
+  const [currentPage, setCurrentPage] = useState("startPage")
+  const [theme, setTheme] = useState("numbers")
+  const [numberOfPlayers, setNumberOfPlayers] = useState("1")
+  const [gridSize, setGridSize] = useState("4x4")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentPage === "startPage"
+      && <StartPage 
+        theme = {theme}
+        setTheme = {setTheme}
+        numberOfPlayers = {numberOfPlayers}
+        setNumberOfPlayers = {setNumberOfPlayers}
+        gridSize = {gridSize}
+        setGridSize = {setGridSize}
+        setCurrentPage = {setCurrentPage}
+      />}
+      {currentPage === "runGame"
+      && <RunGame 
+        theme = {theme}
+        numberOfPlayers = {numberOfPlayers}
+        gridSize = {gridSize}
+        setCurrentPage = {setCurrentPage}
+      />}
     </div>
   );
 }
