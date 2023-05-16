@@ -1,0 +1,25 @@
+body {
+    background-color: white;
+}
+
+img {
+    width: 0;
+    padding: 25px;
+    background-color: var(--color-circle-hidden);
+    border-radius: 50%;
+    visibility: visible;
+    src: "";
+}
+
+img:hover {
+    width: 30px;
+    padding: 10px;
+    background-color: var(--color-circle-active);
+    /* visibility: hidden; */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px;
+}

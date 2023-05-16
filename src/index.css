@@ -5,6 +5,9 @@
     --color-button-selected:  #304859;
     --color-button-text:  #fcfcfc;
     --color-button-start-bckground: #fda214;
+    --color-circle-hidden: var(--color-button-selected);
+    --color-circle-active: #fda214;
+    --color-circle-found: #bcced9;
 }
 
 body {
