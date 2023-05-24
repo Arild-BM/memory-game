@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import React from 'react';
 
 import "./RunGame.css"
 import pic1 from "./data1"
@@ -119,7 +120,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                     {array.map((e, index) => <img
                         className = {`i${index} ${circleClass[index]}`}
                         key = {index}
-                        src = {e}
+                        src = {process.env.PUBLIC_URL + "/" + e}
                         alt = {e.replace("pictures/","").replace(".svg","")}
                         onClick={() => twoEqual(e, index)}
                         ></img>)}
@@ -147,7 +148,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                     </div>
                 )}
             </div>
-            <h2>{pairsLeft}</h2>
+            <h2 className = "player-line">{pairsLeft}</h2>
         </div>
         )
 }
