@@ -17,7 +17,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
     const [moves, setMoves] = useState(0)
     const [isRunning, setIsRunning] = useState(false)
     const [time, setTime] = useState(0)
-    const [circleClass, setCircleClass] = useState(Array(16).fill("cursor"))
+    const [circleClass, setCircleClass] = useState(Array(gridSize === "4x4" ? 16 : 36).fill("cursor"))
 
     const style6x6 = {
         gridTemplateColumns: "auto auto auto auto auto auto",
