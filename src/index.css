@@ -12,4 +12,5 @@
 
 body {
     background-color: var(--color-body-background);
+    user-select: none;
 }

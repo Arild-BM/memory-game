@@ -3,23 +3,224 @@ body {
 }
 
 img {
-    width: 0;
+    width: 0px;
     padding: 25px;
     background-color: var(--color-circle-hidden);
     border-radius: 50%;
-    visibility: visible;
-    src: "";
+    overflow: visible;
 }
 
-img:hover {
+.onclick-off {
+    pointer-events: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+  
+@keyframes rotate-circle {
+  0% {
+    width: 0px;
+    padding: 25px;
+    transform: rotateY(180deg);
+    background-color: var(--color-circle-hidden);
+  }
+  50% {
+    width: 0px;
+    padding: 25px;
+    background-color: var(--color-circle-hidden);
+  }
+  51% {
     width: 30px;
     padding: 10px;
     background-color: var(--color-circle-active);
-    /* visibility: hidden; */
+  }
+  100% {
+    width: 30px;
+    padding: 10px;
+    background-color: var(--color-circle-active);
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotate-old-back {
+  0% {
+    width: 30px;
+    padding: 10px;
+    background-color: var(--color-circle-active);
+    transform: rotateY(360deg);
+  }
+  75% {
+    width: 30px;
+    padding: 10px;
+    background-color: var(--color-circle-active);
+    transform: rotateY(360deg);
+}
+87% {
+    width: 30px;
+    padding: 10px;
+    background-color: var(--color-circle-active);
+}
+88% {
+    width: 0px;
+    padding: 25px;
+    background-color: var(--color-circle-hidden);
+}
+100% {
+    width: 0px;
+    padding: 25px;
+    transform: rotateY(180deg);
+    background-color: var(--color-circle-hidden);
+}
+}
+
+@keyframes rotate-new-back {
+    0% {
+        width: 0px;
+        padding: 25px;
+        transform: rotateY(180deg);
+        background-color: var(--color-circle-hidden);
+    }
+    12% {
+        width: 0px;
+        padding: 25px;
+        background-color: var(--color-circle-hidden);
+    }
+    13% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+    }
+    25% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+      }
+    75% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    87% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+    }
+    88% {
+        width: 0px;
+        padding: 25px;
+        background-color: var(--color-circle-hidden);
+    }
+    100% {
+        transform: rotateY(180deg);
+        background-color: var(--color-circle-hidden);
+    }
+}
+
+@keyframes circle-found {
+    0% {
+        width: 0px;
+        padding: 25px;
+        transform: rotateY(180deg);
+    }
+    25% {
+        width: 0px;
+        padding: 25px;
+        background-color: var(--color-circle-hidden);
+    }
+    26% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+    }
+    50% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    99% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    100% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-found);
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes circle-old-found {
+    0% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    50% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    99% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-active);
+        transform: rotateY(360deg);
+    }
+    100% {
+        width: 30px;
+        padding: 10px;
+        background-color: var(--color-circle-found);
+        transform: rotateY(360deg);
+    }
 }
 
 .grid {
+    width: 400px;
+    margin: auto auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
     gap: 20px;
+    /* border: 2px green solid; */
+}
+
+.player-line {
+    margin: 20px auto 0;
+    width: 500px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.player {
+    position: relative;
+    width: 70px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-circle-found);
+}
+
+.player::after {
+    content: "";
+    padding: 8px;
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    top: -8px;
+    rotate: 45deg;
+    z-index: -1;
+}
+
+.active-player, .active-player.player::after {
+    background-color: var(--color-circle-active);
 }
