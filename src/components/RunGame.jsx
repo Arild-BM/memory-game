@@ -18,6 +18,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
     const [isRunning, setIsRunning] = useState(false)
     const [time, setTime] = useState(0)
     const [circleClass, setCircleClass] = useState(Array(gridSize === "4x4" ? 16 : 36).fill("cursor"))
+    const [activePlayerClass, setActivePlayerClass] = useState(["player active-player", ...Array(+numberOfPlayers-1).fill("player")])
 
     const style6x6 = {
         gridTemplateColumns: "auto auto auto auto auto auto",
@@ -42,8 +43,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
             oldIndex = index
             firstNumber = false
             if (numberOfPlayers === "1" && !isRunning) {
-                setIsRunning(true)
-                console.log("Start")
+                setIsRunning(() => true)
             }
         } else {
             if (oldNumber === e) {
@@ -70,7 +70,6 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                           ]
                 })
                 firstNumber = true
-                // setPairsLeft(prevValue => prevValue - 1)
                 setPoints(prevValues => {
                     return [
                             ...prevValues.slice(0, currentPlayer),
@@ -88,8 +87,12 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                 document.querySelector(".i" + oldIndex).style.animation = 'rotate-old-back 2s linear forwards'
                 firstNumber = true
                 if (numberOfPlayers > 1) {
-                    document.querySelector(".p" + currentPlayer).classList.remove("active-player")
-                    document.querySelector(".p" + ((currentPlayer + 1)  === +numberOfPlayers ? 0 : (currentPlayer + 1 ))).classList.add("active-player")
+                    setActivePlayerClass(prevValues => {
+                        return [
+                                ...prevValues.slice(-1),
+                                ...prevValues.slice(0, -1)
+                              ]
+                    })
                     setCurrentPlayer(prevValue => (prevValue + 1) === +numberOfPlayers ? 0 : prevValue + 1)
                 }
             }
@@ -129,7 +132,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                 <div className = "player-line">
                     {points.map((e, index) => {
                         return (
-                        <div className = {`p${index} player ${!index ? "active-player" : null}`}>
+                        <div className = {`${activePlayerClass[index]}`}>
                             <h3>Player {index+1}</h3>
                             <h3>{e}</h3>
                         </div>
