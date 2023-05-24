@@ -16,6 +16,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
     const [moves, setMoves] = useState(0)
     const [isRunning, setIsRunning] = useState(false)
     const [time, setTime] = useState(0)
+    const [circleClass, setCircleClass] = useState(Array(16).fill("cursor"))
 
     const style6x6 = {
         gridTemplateColumns: "auto auto auto auto auto auto",
@@ -26,7 +27,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
         let intervalId;
         if (isRunning) {
           // setting time every second
-          intervalId = setInterval(() => setTime(time + 1), 5000)
+          intervalId = setInterval(() => setTime(time + 1), 3000)
         }
         return () => clearInterval(intervalId)
       }, [isRunning, time])
@@ -45,19 +46,30 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
             }
         } else {
             if (oldNumber === e) {
+                setPairsLeft(prevValue => prevValue - 1)
                 setMoves(prevValue => prevValue + 1)
                 document.querySelector(".i" + index).style.animation = 'none'
                 void document.querySelector(".i" + index).offsetWidth
                 document.querySelector(".i" + index).style.animation = 'circle-found 0.6s linear forwards'
-                document.querySelector(".i" + index).classList.remove("cursor")
-                document.querySelector(".i" + index).classList.add("onclick-off")
+                setCircleClass(prevValues => {
+                    return [
+                            ...prevValues.slice(0, index),
+                            "onclick-off",
+                            ...prevValues.slice(index+1)
+                          ]
+                })
                 document.querySelector(".i" + oldIndex).style.animation = 'none'
                 void document.querySelector(".i" + oldIndex).offsetWidth
                 document.querySelector(".i" + oldIndex).style.animation = 'circle-old-found 0.6s linear forwards'
-                document.querySelector(".i" + oldIndex).classList.remove("cursor")
-                document.querySelector(".i" + oldIndex).classList.add("onclick-off")
+                setCircleClass(prevValues => {
+                    return [
+                            ...prevValues.slice(0, oldIndex),
+                            "onclick-off",
+                            ...prevValues.slice(oldIndex+1)
+                          ]
+                })
                 firstNumber = true
-                setPairsLeft(prevValue => prevValue - 1)
+                // setPairsLeft(prevValue => prevValue - 1)
                 setPoints(prevValues => {
                     return [
                             ...prevValues.slice(0, currentPlayer),
@@ -105,7 +117,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                         style = {gridSize === "6x6" ? style6x6 : null}
                         >
                     {array.map((e, index) => <img
-                        className = {`i${index} cursor`}
+                        className = {`i${index} ${circleClass[index]}`}
                         key = {index}
                         src = {e}
                         alt = {e.replace("pictures/","").replace(".svg","")}
