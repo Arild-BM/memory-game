@@ -148,7 +148,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
                     </div>
                 )}
             </div>
-            <h2 className = "player-line">{pairsLeft}</h2>
+            <h2 className = "player-line">Pairs left: {pairsLeft}</h2>
         </div>
         )
 }
