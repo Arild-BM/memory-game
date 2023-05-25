@@ -1,0 +1,41 @@
+.winner {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    border: 1px solid red;
+    border-radius: 8px;
+    background-color: white;
+    min-height: 280px;
+    z-index: 1;
+}
+
+
+.winner-name {
+    color: var(--color-text-dark);
+}
+
+h4 {
+    color: var(--color-text-dim);
+    margin: 0;
+}
+
+.result-line {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-winner-background);
+    color: var(--color-button-text);
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.no-winner {
+    background-color: var(--color-no-winner-background);
+    color: var(--color-text-dark);
+}

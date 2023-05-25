@@ -1,16 +1,38 @@
 :root {
-    --color-body-background: #152938;
     --color-modal-bckground: #ffffff;
     --color-button-bckground:  #bcced9;
     --color-button-selected:  #304859;
     --color-button-text:  #fcfcfc;
+    --color-text-dark: #152938;
+    --color-text-dim: #7191a5;
+    --color-winner-background: #152938;
+    --color-no-winner-background: #dfe7ec;
     --color-button-start-bckground: #fda214;
+    --color-button-restart-bckground: #fda214;
+    --color-button-newgame-bckground: #dfe6ec;
+    --color-button-newgame:  #304859;
     --color-circle-hidden: var(--color-button-selected);
     --color-circle-active: #fda214;
     --color-circle-found: #bcced9;
 }
 
+/* Dark background */
+:root,
+:root.dark {
+    --color-body-background: #152938;
+}
+
+/* Light background */
+:root,
+:root.light {
+    --color-body-background: white;
+}
+
 body {
     background-color: var(--color-body-background);
     user-select: none;
+}
+
+:root.dim {
+    opacity: 0.5;
 }

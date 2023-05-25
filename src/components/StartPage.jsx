@@ -2,8 +2,6 @@ import './StartPage.css';
 
 function StartPage({theme, setTheme, numberOfPlayers, setNumberOfPlayers,
     gridSize, setGridSize, setCurrentPage }) {
-    
-    
 
     return (
         <div className='main'>

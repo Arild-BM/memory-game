@@ -2,11 +2,13 @@ import {useEffect, useState} from "react"
 import React from 'react';
 
 import "./RunGame.css"
+import GameOver from "./GameOver"
 import pic1 from "./data1"
 import pic2 from "./data2"
+
 let pic = pic1
 
-function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
+function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
     let array = []
     let firstNumber = true
     let oldNumber = ""
@@ -19,11 +21,14 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
     const [time, setTime] = useState(0)
     const [circleClass, setCircleClass] = useState(Array(gridSize === "4x4" ? 16 : 36).fill("cursor"))
     const [activePlayerClass, setActivePlayerClass] = useState(["player active-player", ...Array(+numberOfPlayers-1).fill("player")])
+    const [gameOver, setGameOver] = useState(false)
 
     const style6x6 = {
         gridTemplateColumns: "auto auto auto auto auto auto",
         gap: "5px"
     }
+
+    setColor(() => "light")
 
     useEffect(() => {
         let intervalId;
@@ -98,28 +103,44 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage }) {
             }
         }
     }
-
-
-
-
+    
     if (theme === "numbers") {
         pic = pic2
     }
     if (gridSize === "4x4") {
         array = pic.slice(0, 8)
-        array = [...array, ...array]
-        
+        array = [...array, ...array]        
     } else {
         array = [...pic, ...pic]
     }
-    // array.sort(function(){return 0.5 - Math.random()});
+    // array.sort(function(){return 0.5 - Math.random()})
+    
     
     return (
         <div>
+            {gameOver && <GameOver points = {points}/>}
+            <div className = "header">
+            <h3>memory</h3>
+            <div className = "buttons">
+                <h3 className = "run-game-button"
+                onClick = {() => {
+                    setCurrentPage(() => "restartGame")
+                }}>Restart</h3>
+                <h3 className = "run-game-button"
+                    onClick = {() => {
+                        setGameOver((prevValue) => !prevValue)
+                    }}>TEST</h3>
+                <h3 className = "run-game-button"
+                onClick = {() => {
+                    setCurrentPage(() => "startPage")
+                    setColor(() => "dark")
+                }}>New Game</h3>
+            </div>
+            </div>
             <div>
                 <div className = "grid"
-                        style = {gridSize === "6x6" ? style6x6 : null}
-                        >
+                    style = {gridSize === "6x6" ? style6x6 : null}
+                    >
                     {array.map((e, index) => <img
                         className = {`i${index} ${circleClass[index]}`}
                         key = {index}

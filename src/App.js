@@ -1,6 +1,7 @@
 import { useState } from "react"
 import StartPage from "./components/StartPage"
 import RunGame from "./components/RunGame"
+import RestartGame from "./components/RestartGame"
 import './App.css';
 
 
@@ -10,6 +11,9 @@ function App() {
   const [theme, setTheme] = useState("numbers")
   const [numberOfPlayers, setNumberOfPlayers] = useState("1")
   const [gridSize, setGridSize] = useState("4x4")
+  const [color, setColor] = useState("dark")
+
+  document.documentElement.className = color
 
   return (
     <div className="App">
@@ -17,6 +21,7 @@ function App() {
       && <StartPage 
         theme = {theme}
         setTheme = {setTheme}
+        color = {color}
         numberOfPlayers = {numberOfPlayers}
         setNumberOfPlayers = {setNumberOfPlayers}
         gridSize = {gridSize}
@@ -28,6 +33,11 @@ function App() {
         theme = {theme}
         numberOfPlayers = {numberOfPlayers}
         gridSize = {gridSize}
+        setCurrentPage = {setCurrentPage}
+        setColor = {setColor}
+      />}
+      {currentPage === "restartGame" 
+      && <RestartGame 
         setCurrentPage = {setCurrentPage}
       />}
     </div>
