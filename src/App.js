@@ -2,7 +2,6 @@ import { useState } from "react"
 import StartPage from "./components/StartPage"
 import RunGame from "./components/RunGame"
 import RestartGame from "./components/RestartGame"
-import './App.css';
 
 
 function App() {
