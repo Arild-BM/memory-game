@@ -1,6 +1,6 @@
 img {
     width: 0px;
-    padding: 25px;
+    padding: var(--medium-circle);
     background-color: var(--color-circle-hidden);
     border-radius: 50%;
     overflow: visible;
@@ -17,23 +17,23 @@ img {
 @keyframes rotate-circle {
   0% {
     width: 0px;
-    padding: 25px;
+    padding: var(--medium-circle);
     transform: rotateY(180deg);
     background-color: var(--color-circle-hidden);
   }
   50% {
     width: 0px;
-    padding: 25px;
+    padding: var(--medium-circle);
     background-color: var(--color-circle-hidden);
   }
   51% {
-    width: 30px;
-    padding: 10px;
+    width: var(--large-circle);
+    padding: var(--small-circle);
     background-color: var(--color-circle-active);
   }
   100% {
-    width: 30px;
-    padding: 10px;
+    width: var(--large-circle);
+    padding: var(--small-circle);
     background-color: var(--color-circle-active);
     transform: rotateY(360deg);
   }
@@ -41,30 +41,30 @@ img {
 
 @keyframes rotate-old-back {
   0% {
-    width: 30px;
-    padding: 10px;
+    width: var(--large-circle);
+    padding: var(--small-circle);
     background-color: var(--color-circle-active);
     transform: rotateY(360deg);
   }
   75% {
-    width: 30px;
-    padding: 10px;
+    width: var(--large-circle);
+    padding: var(--small-circle);
     background-color: var(--color-circle-active);
     transform: rotateY(360deg);
 }
 87% {
-    width: 30px;
-    padding: 10px;
+    width: var(--large-circle);
+    padding: var(--small-circle);
     background-color: var(--color-circle-active);
 }
 88% {
     width: 0px;
-    padding: 25px;
+    padding: var(--medium-circle);
     background-color: var(--color-circle-hidden);
 }
 100% {
     width: 0px;
-    padding: 25px;
+    padding: var(--medium-circle);
     transform: rotateY(180deg);
     background-color: var(--color-circle-hidden);
 }
@@ -73,40 +73,40 @@ img {
 @keyframes rotate-new-back {
     0% {
         width: 0px;
-        padding: 25px;
+        padding: var(--medium-circle);
         transform: rotateY(180deg);
         background-color: var(--color-circle-hidden);
     }
     12% {
         width: 0px;
-        padding: 25px;
+        padding: var(--medium-circle);
         background-color: var(--color-circle-hidden);
     }
     13% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
     }
     25% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
       }
     75% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     87% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
     }
     88% {
         width: 0px;
-        padding: 25px;
+        padding: var(--medium-circle);
         background-color: var(--color-circle-hidden);
     }
     100% {
@@ -118,34 +118,34 @@ img {
 @keyframes circle-found {
     0% {
         width: 0px;
-        padding: 25px;
+        padding: var(--medium-circle);
         transform: rotateY(180deg);
     }
     25% {
         width: 0px;
-        padding: 25px;
+        padding: var(--medium-circle);
         background-color: var(--color-circle-hidden);
     }
     26% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
     }
     50% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     99% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     100% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-found);
         transform: rotateY(360deg);
     }
@@ -153,33 +153,33 @@ img {
 
 @keyframes circle-old-found {
     0% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     50% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     99% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-active);
         transform: rotateY(360deg);
     }
     100% {
-        width: 30px;
-        padding: 10px;
+        width: var(--large-circle);
+        padding: var(--small-circle);
         background-color: var(--color-circle-found);
         transform: rotateY(360deg);
     }
 }
 
 .grid {
-    width: 400px;
+    width: var(--main-width);
     margin: auto auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -191,7 +191,7 @@ img {
 .header {
     margin: 20px auto 20px;
     width: 700px;
-    max-width: 100%;
+    max-width: 80%;
     display: flex;
     justify-content: space-between;
 }
@@ -241,6 +241,26 @@ img {
     display: flex;
     justify-content: space-between;
     background-color: var(--color-circle-found);
+    z-index: -1;
+}
+
+@media (max-width: 500px) {
+    .header {
+        margin: 10px auto 10px;
+        max-width: 80%;
+    }
+    .player-line {
+        margin: 20px auto 0;
+        width: calc(35px + var(--main-width));
+    }
+    .player {
+        width: 50px;
+        padding: 3px 7px;
+    }
+
+    .run-game-button {
+        padding: 3px 7px;
+    }
 }
 
 .active-player.player::before {
@@ -252,6 +272,12 @@ img {
     font-weight: bold;
     text-transform: uppercase ;
     top: 35px;
+}
+
+@media (max-width: 500px) {
+    .active-player.player::before {
+        visibility: hidden;
+    }
 }
 
 .player::after {

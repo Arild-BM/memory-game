@@ -54,3 +54,17 @@ h3 {
 .selected {
     background-color: var(--color-button-selected);
 }
+
+@media (max-width: 500px) {
+    h2 {
+        font-size: 0.5rem;
+    }
+
+    h3 {
+        font-size: 0.6rem;
+    }
+
+    .button {
+        padding: 3px 5px;
+    }
+}

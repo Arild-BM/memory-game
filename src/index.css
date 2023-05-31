@@ -14,6 +14,10 @@
     --color-circle-hidden: var(--color-button-selected);
     --color-circle-active: #fda214;
     --color-circle-found: #bcced9;
+    --large-circle: 30px;
+    --medium-circle: 25px;
+    --small-circle: 10px;
+    --main-width: 400px;
 }
 
 /* Dark background */
@@ -33,6 +37,11 @@ body {
     user-select: none;
 }
 
-:root.dim {
-    opacity: 0.5;
+@media (max-width: 500px) {
+    :root {
+        --large-circle: 20px;
+        --medium-circle: 15px;
+        --small-circle: 5px;
+        --main-width: 250px;
+    }
 }

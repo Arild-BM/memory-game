@@ -3,6 +3,7 @@ import React from 'react';
 
 import "./RunGame.css"
 import GameOver from "./GameOver"
+import GameOver1 from "./GameOver1"
 import pic1 from "./data1"
 import pic2 from "./data2"
 
@@ -21,7 +22,6 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
     const [time, setTime] = useState(0)
     const [circleClass, setCircleClass] = useState(Array(gridSize === "4x4" ? 16 : 36).fill("cursor"))
     const [activePlayerClass, setActivePlayerClass] = useState(["player active-player", ...Array(+numberOfPlayers-1).fill("player")])
-    const [gameOver, setGameOver] = useState(false)
 
     const style6x6 = {
         gridTemplateColumns: "auto auto auto auto auto auto",
@@ -32,12 +32,12 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
 
     useEffect(() => {
         let intervalId;
-        if (isRunning) {
+        if (isRunning && pairsLeft) {
           // setting time every second
           intervalId = setInterval(() => setTime(time + 1), 3000)
         }
         return () => clearInterval(intervalId)
-      }, [isRunning, time])
+      }, [isRunning, time, pairsLeft])
 
     function twoEqual(e, index) {
         if (firstNumber) {
@@ -51,7 +51,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
                 setIsRunning(() => true)
             }
         } else {
-            if (oldNumber === e) {
+            if ((oldNumber === e) && (index !== oldIndex)) {
                 setPairsLeft(prevValue => prevValue - 1)
                 setMoves(prevValue => prevValue + 1)
                 document.querySelector(".i" + index).style.animation = 'none'
@@ -118,7 +118,17 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
     
     return (
         <div>
-            {gameOver && <GameOver points = {points}/>}
+            {!pairsLeft && numberOfPlayers > 1 && <GameOver
+                points = {points}
+                setCurrentPage = {setCurrentPage}
+                setColor = {setColor}
+                />}
+            {!pairsLeft && (numberOfPlayers === "1") && <GameOver1
+                setCurrentPage = {setCurrentPage}
+                setColor = {setColor}
+                time = {time}
+                moves = {moves}
+                />}
             <div className = "header">
             <h3>memory</h3>
             <div className = "buttons">
@@ -126,10 +136,6 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
                 onClick = {() => {
                     setCurrentPage(() => "restartGame")
                 }}>Restart</h3>
-                <h3 className = "run-game-button"
-                    onClick = {() => {
-                        setGameOver((prevValue) => !prevValue)
-                    }}>TEST</h3>
                 <h3 className = "run-game-button"
                 onClick = {() => {
                     setCurrentPage(() => "startPage")
@@ -172,7 +178,6 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
                     </div>
                 )}
             </div>
-            <h2 className = "player-line">Pairs left: {pairsLeft}</h2>
         </div>
         )
 }
