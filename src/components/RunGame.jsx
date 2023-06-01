@@ -148,17 +148,19 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor, ne
                 moves = {moves}
                 />}
             {/* Header med logo og knapperad */}
-            <h3>memory</h3>
-            <div className = "buttons">
-                <h3 className = "run-game-button"
-                onClick = {() => {
-                    setCurrentPage(() => "restartGame")
-                }}>Restart</h3>
-                <h3 className = "run-game-button"
-                onClick = {() => {
-                    setCurrentPage(() => "startPage")
-                    setColor(() => "dark")
-                }}>New Game</h3>
+            <div className = "header">
+                <h3>memory</h3>
+                <div className = "buttons">
+                    <h3 className = "run-game-button"
+                    onClick = {() => {
+                        setCurrentPage(() => "restartGame")
+                    }}>Restart</h3>
+                    <h3 className = "run-game-button"
+                    onClick = {() => {
+                        setCurrentPage(() => "startPage")
+                        setColor(() => "dark")
+                    }}>New Game</h3>
+                </div>
             </div>
             {/* Grid med 16 eller 36 brikker */}
             <div>
