@@ -1,3 +1,4 @@
+// Restarter spillet
 function RestartGame({setCurrentPage}) {
 
     return (

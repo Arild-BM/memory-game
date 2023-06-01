@@ -1,3 +1,4 @@
+/* Plassering av vinner-modal */
 .winner {
     position: absolute;
     top: 50px;
@@ -13,6 +14,7 @@
     z-index: 1;
 }
 
+/* Gi bakgrunnen litt mørkere farge */
 .darken-background {
     position: absolute;
     top: 0;
@@ -32,6 +34,7 @@ h4 {
     margin: 0 0 15px;
 }
 
+/* Hver linje med resultater */
 .result-line {
     width: 150px;
     display: flex;
@@ -43,16 +46,19 @@ h4 {
     margin: 5px 0;
 }
 
+/* Resultatside ved kun 1 spiller */
 .result-page {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
+/* Avstand i mellom resultater og kanpperad for side med 1 spiller */
 .result-page-top {
     gap: 20px;
 }
 
+/* Farge på resultat for spillere som ikke vant */
 .no-winner {
     background-color: var(--color-no-winner-background);
     color: var(--color-text-dark);
@@ -63,6 +69,7 @@ h4 {
     margin-bottom: 15px;
 }
 
+/* Endringer for liten skjerm */
 @media (max-width: 500px) {
     .winner {
         top: 35px;

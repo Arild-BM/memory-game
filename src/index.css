@@ -1,3 +1,4 @@
+/* Variabler brukt i alle css-filer */
 :root {
     --color-modal-bckground: #ffffff;
     --color-button-bckground:  #bcced9;
@@ -20,23 +21,25 @@
     --main-width: 400px;
 }
 
-/* Dark background */
+/* Mørk bakgrunn */
 :root,
 :root.dark {
     --color-body-background: #152938;
 }
 
-/* Light background */
+/* Lys bakgrunn */
 :root,
 :root.light {
     --color-body-background: white;
 }
 
+/* Bakgrunnfarge for body og hindre at noe i skjermen kan markeres ("velges") */
 body {
     background-color: var(--color-body-background);
     user-select: none;
 }
 
+/* Endringer for liten skjerm */
 @media (max-width: 500px) {
     :root {
         --large-circle: 20px;

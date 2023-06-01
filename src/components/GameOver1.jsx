@@ -1,3 +1,4 @@
+// Viser modal med resultat ved 1 spiller
 import "./GameOver.css"
 
 function GameOver({setCurrentPage, setColor, time, moves}) {
@@ -6,6 +7,7 @@ function GameOver({setCurrentPage, setColor, time, moves}) {
     return (
         <div>
         <div className = "darken-background"></div>
+        {/* Vinner-modal */}
         <div className = "winner">
             <h1 className = "winner-name">You did it!</h1>
             <h4>Game over! Here's how you got on...</h4>
@@ -20,6 +22,7 @@ function GameOver({setCurrentPage, setColor, time, moves}) {
                         <h3>{moves + " moves"}</h3>
                     </div>
                 </div>
+                {/* Knapperad */}
                 <div className = "result-page">
                     <h3 className = "run-game-button"
                     onClick = {() => {
