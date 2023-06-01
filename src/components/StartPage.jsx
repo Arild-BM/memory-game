@@ -1,7 +1,7 @@
 import './StartPage.css';
 
 function StartPage({theme, setTheme, numberOfPlayers, setNumberOfPlayers,
-    gridSize, setGridSize, setCurrentPage }) {
+    gridSize, setGridSize, setCurrentPage, setNewgame }) {
 
     return (
         <div className='main'>
@@ -75,6 +75,7 @@ function StartPage({theme, setTheme, numberOfPlayers, setNumberOfPlayers,
                 <h3 className = "button start-game"
                 onClick = {() => {
                     setCurrentPage(() => "runGame")
+                    setNewgame((prevValue) => prevValue + 1 )
                 }}
                 >Start Game</h3>
             </div>

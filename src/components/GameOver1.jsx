@@ -17,7 +17,7 @@ function GameOver({setCurrentPage, setColor, time, moves}) {
                     </div>
                     <div className = "result-line no-winner">
                         <h3>Moves Taken</h3>
-                        <h3>{moves}</h3>
+                        <h3>{moves + " moves"}</h3>
                     </div>
                 </div>
                 <div className = "result-page">

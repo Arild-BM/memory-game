@@ -11,6 +11,7 @@ function App() {
   const [numberOfPlayers, setNumberOfPlayers] = useState("1")
   const [gridSize, setGridSize] = useState("4x4")
   const [color, setColor] = useState("dark")
+  const [newgame, setNewgame] = useState (0)
 
   document.documentElement.className = color
 
@@ -26,6 +27,7 @@ function App() {
         gridSize = {gridSize}
         setGridSize = {setGridSize}
         setCurrentPage = {setCurrentPage}
+        setNewgame = {setNewgame}
       />}
       {currentPage === "runGame"
       && <RunGame 
@@ -34,6 +36,7 @@ function App() {
         gridSize = {gridSize}
         setCurrentPage = {setCurrentPage}
         setColor = {setColor}
+        newgame = {newgame}
       />}
       {currentPage === "restartGame" 
       && <RestartGame 

@@ -9,11 +9,12 @@ import pic2 from "./data2"
 
 let pic = pic1
 
-function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
+function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor, newgame}) {
     let array = []
     let firstNumber = true
     let oldNumber = ""
     let oldIndex = ""
+    const [stateArray, setStateArray] = useState([])
     const [pairsLeft, setPairsLeft] = useState(gridSize === "4x4" ? 8 : 18)
     const [currentPlayer, setCurrentPlayer] = useState(0)
     const [points, setPoints] = useState(Array(+numberOfPlayers).fill(0))
@@ -31,13 +32,15 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
     setColor(() => "light")
 
     useEffect(() => {
-        let intervalId;
+        let intervalId
         if (isRunning && pairsLeft) {
           // setting time every second
-          intervalId = setInterval(() => setTime(time + 1), 3000)
+          intervalId = setInterval(() => setTime(time + 1), 5000)
+          console.log(time)
         }
         return () => clearInterval(intervalId)
-      }, [isRunning, time, pairsLeft])
+        // eslint-disable-next-line
+      }, [time, isRunning])
 
     function twoEqual(e, index) {
         if (firstNumber) {
@@ -104,18 +107,26 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
         }
     }
     
-    if (theme === "numbers") {
-        pic = pic2
-    }
-    if (gridSize === "4x4") {
-        array = pic.slice(0, 8)
-        array = [...array, ...array]        
-    } else {
-        array = [...pic, ...pic]
-    }
-    // array.sort(function(){return 0.5 - Math.random()})
     
-    
+    useEffect(() => {
+        if (theme === "numbers") {
+            pic = pic2
+        } else {
+            pic = pic1
+        }
+        if (gridSize === "4x4") {
+            // eslint-disable-next-line
+            array = pic.slice(0, 8)
+            array = [...array, ...array]        
+        } else {
+            array = [...pic, ...pic]
+        }
+        // array.sort(function(){return 0.5 - Math.random()})
+        setStateArray(() => [...array])
+        // eslint-disable-next-line
+      }, [newgame])
+
+
     return (
         <div>
             {!pairsLeft && numberOfPlayers > 1 && <GameOver
@@ -147,7 +158,7 @@ function RunGame({theme, numberOfPlayers, gridSize, setCurrentPage, setColor}) {
                 <div className = "grid"
                     style = {gridSize === "6x6" ? style6x6 : null}
                     >
-                    {array.map((e, index) => <img
+                    {stateArray.map((e, index) => <img
                         className = {`i${index} ${circleClass[index]}`}
                         key = {index}
                         src = {process.env.PUBLIC_URL + "/" + e}

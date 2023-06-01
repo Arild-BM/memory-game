@@ -19,7 +19,7 @@ function GameOver({points, setCurrentPage, setColor}) {
                         return (
                         <div className = {index === 0 ? "result-line" : index > 0 && point[1] === results[0][1] ? "result-line" : "result-line no-winner"}>
                             <h3>{point[0]}</h3>
-                            <h3>{point[1]}</h3>
+                            <h3>{point[1] === 1 ? point[1] + " pair" : point[1] + " pairs"}</h3>
                         </div>
                     )})}
             <div className = "buttons buttons-winnerpage">
