@@ -12,7 +12,7 @@ img {
     pointer-events: none;
 }
 
-/*  */
+/* Pointer-cursor over brikker */
 .cursor {
     cursor: pointer;
 }
@@ -195,15 +195,6 @@ img {
     grid-template-columns: auto auto auto auto;
     justify-content: space-around;
     gap: 20px;
-}
-
-
-.header {
-    margin: 20px auto 20px;
-    width: 700px;
-    max-width: 80%;
-    display: flex;
-    justify-content: space-between;
 }
 
 /* Knapper over grid */
